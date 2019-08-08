@@ -9,3 +9,5 @@ const ToDoItem = ({ title, text, deleteToDo, id }) => {
     </div>
   )
 }
+
+export default ToDoItem;

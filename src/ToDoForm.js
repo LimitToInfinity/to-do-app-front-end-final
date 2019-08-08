@@ -47,3 +47,5 @@ class ToDoForm extends Component {
     )
   }
 }
+
+export default ToDoForm;
