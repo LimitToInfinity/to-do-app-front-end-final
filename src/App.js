@@ -12,13 +12,29 @@ class App extends Component {
     }
   }
 
+  componentDidMount() {
+    fetch("http://localhost:3000/to_dos")
+      .then(response => response.json())
+      .then(toDos => this.setState({ toDos, }))
+  }
+
   addToDo = (toDo) => {
     const { toDos } = this.state
     const newToDo = {...toDo, id: Date.now()}
 
-    this.setState({
-      toDos: [newToDo, ...toDos]
-    })
+    // this.setState({
+    //   toDos: [...toDos, newToDo]
+    // })
+    
+    fetch("http://localhost:3000/to_dos", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(newToDo)
+    }).then(response => response.json())
+      .then(newToDo => this.setState({ toDos: [...toDos, newToDo] }))
+      
   }
 
   deleteToDo = (id) => {
@@ -28,7 +44,14 @@ class App extends Component {
     this.setState({
       toDos: newToDos
     })
-  }
+
+    fetch(`http://localhost:3000/to_dos/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json"
+      }
+  })
+}
 
   render(){
     const { toDos } = this.state

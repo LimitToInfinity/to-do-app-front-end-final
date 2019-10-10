@@ -5,7 +5,7 @@ class ToDoForm extends Component {
     super()
     this.state = {
       title: "",
-      text: ""
+      content: ""
     }
   }
 
@@ -14,7 +14,7 @@ class ToDoForm extends Component {
     this.props.addToDo(this.state)
     this.setState({
       title: "",
-      text: ""
+      content: ""
     })
   }
 
@@ -26,7 +26,7 @@ class ToDoForm extends Component {
   }
 
   render() {
-    const { title, text } = this.state
+    const { title, content } = this.state
 
     return(
       <form onSubmit={this.handleSubmit}>
@@ -37,9 +37,9 @@ class ToDoForm extends Component {
           onChange={this.handleChange}
           className="form-input"/>
         <input
-          placeholder="Enter ToDo text"
-          name="text"
-          value={text}
+          placeholder="Enter ToDo content"
+          name="content"
+          value={content}
           onChange={this.handleChange}
           className="form-input"/>
         <button>Save ToDo!</button>

@@ -7,7 +7,7 @@ const ToDoContainer = ({ toDos, deleteToDo }) => {
     return <ToDoItem
             key={toDo.id}
             title={toDo.title}
-            text={toDo.text}
+            content={toDo.content}
             deleteToDo={deleteToDo}
             id={toDo.id}
           />
